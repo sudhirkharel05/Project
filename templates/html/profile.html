@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Profile || S.S Adventure & Tours</title>
+    {% extends "html/base.html" %}
+    {% block body_block %}
+    {% load static %}
+
+
+    <div class="container emp-profile">
+        <form method="post" style="margin-top: 18% !important;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                            alt="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            {{ user.username }}
+                        </h5>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                    aria-controls="profile" aria-selected="false">Timeline</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+                        <p>WORK LINK</p>
+                        <a href="">NIL</a><br />
+                        <a href="">NIL</a><br />
+                        <a href="">NIL</a>
+                        <p>SKILLS</p>
+                        <a href="">Web Designer</a><br />
+                        <a href="">Web Developer</a><br />
+                        <a href="">Software developer</a><br />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>User Id</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.id }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.first_name }} {{ user.last_name }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.email }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Profession</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p> Not Known</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row">
+
+
+                                <table class="tflight">
+                                    <thead class="tfhead">
+                                        <th>Seat NUmber</th>
+                                        <th>Passanger Name</th>
+                                        <th>Flight id</th>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in user_bookings %}
+                                        <tr>
+                                            <td>{{ i.seat_number }}</td>
+                                            <td>{{ i.passanger_id.passanger_name }}</td>
+                                            <td>{{ i.flight_id }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+
+                                </table>
+
+                                <!-- {% for user_booking in user_bookings%}
+                                <p>{{user_booking.seat_number}}</p>
+                                <p>{{ user_booking.passanger_id.passanger_name }}</p>
+                                {% endfor %} -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    {% endblock %}

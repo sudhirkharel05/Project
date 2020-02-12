@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="icon" href="{% static 'Logo.png' %}" type="image/icon type">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+  <header id="nav-fix">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-logo" href="#"><img src="{% static "image/Logo.png" %}" alt="company logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active ">
+            <a class="nav-link " href="{% url 'index' %}"><i class="fa fa-fw fa-home"></i>Home <span
+                class="sr-only">(current)</span></a></li>
+          {% if request.user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'wat' %}"><i class="fa fa-fw fa-user"></i>Admin</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+          </li>
+
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'place' %}"><i class="fa fa-fw fa-calendar"></i>Events</a>
+          </li>
+          {% if user.is_authenticated%}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'booking' %}"><i class="fa fa-fe fa-ticket"></i>Booking</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" onclick="show()" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user"></i> {{user.first_name}} </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+              <a class="dropdown-item" href="#">My account</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item" id="registername">
+            <a class="nav-link" onclick="wat(this)" id="register_go" href="{% url 'register' %}"><i
+                class="fas fa-user-plus"></i>Register</a>
+          </li>
+          <li class="nav-item" id="log">
+            <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i>Login</a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </div>
+    </nav>
+
+    </div>
+
+  </header>
+  {% block body_block %}
+
+
+  {% endblock %}
+
+
+  <footer class="leg">
+    <div class="socialmedia-follow">
+      <p>Follow us on:</p>
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-google"></a>
+      <a href="#" class="fa fa-linkedin"></a>
+      <a href="#" class="fa fa-youtube"></a>
+      <div class="cpy-right">
+        <p>&copy; 2020. S.S Adventure & Tours Pvt. Ltd.</p>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript" src="{% static 'javascript/index.js' %}"></script>
+</body>
+
+</html>

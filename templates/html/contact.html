@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Contact Us || S.S Adventure & Tours</title>
+{% extends "html/base.html" %}
+{% block body_block %}
+{% load static %}
+
+
+<div class="container" id="cnt">
+  <div style="text-align:center">
+    <h2 style="color: purple;">Contact Us</h2>
+    <p>Have any inquiry ?? Leave us a message:</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14133.797993773442!2d85.3859509!3d27.6724989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1581010446994!5m2!1sen!2snp" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </div>
+    <div class="column">
+      <form action="/action_page.php">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email..">
+        <label for="subject">Subject</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+</div>
+ 
+ 
+  {% endblock %}

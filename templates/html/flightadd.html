@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>update || S.S Adventure & Tours</title>
+{% extends "html/base.html" %}
+{% block body_block %}
+{% load static %}
+        <div class="container"><br>
+            <div class="flight-form-box" style="width: 30%; margin-top: 12%; margin-left: 36%;">
+           
+        <form class="update-flight" action="" method="POST" autocomplete="off">
+            <br>
+            <h4 style="text-align: center; color: seashell;">Update Flights</h4>
+          
+        {% csrf_token%}
+        {{form}}
+        <button id="update-botton" type="submit" name="update">Update</button>
+    </form>
+    <br>
+</div>
+<br>
+</div>
+   {% endblock %}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Register || S.S Adventure & Tours</title>
+
+    {% extends "html/base.html" %}
+    {% block body_block %}
+    {% load static %}
+    <div class="container">
+        <div class="reg-content">
+            <br>
+            <h5 style="text-align: center; color: white; background-color: rosybrown;">
+                {% if messages %}
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+
+                {% endif %}
+            </h5>
+            <form class="border border-light p-5" id="reg12" action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+
+                <p class="h4 mb-4 text-center">Sign up</p>
+
+                <input type="text" id="defaultRegisterFormFirstName" name="first_name" class="form-control"
+                    placeholder="First name" required>
+                <div class="invalid-feedback">Missing Firstname</div>
+
+                <input type="text" id="defaultRegisterFormLastName" name="last_name" class="form-control"
+                    placeholder="Last name" required>
+                <div class="invalid-feedback">Missing Lastname</div>
+                <input type="text" id="defaultRegisterFormUserName" name="username" class="form-control"
+                    placeholder="Username" required>
+                <input type="email" id="defaultRegisterFormEmail" name="email" class="form-control mb-4"
+                    placeholder="E-mail" required>
+                <div class="invalid-feedback">Please enter the Email address</div>
+
+                <input type="password" id="defaultRegisterFormPassword" name="password1" class="form-control"
+                    placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                <div class="invalid-feedback">Please enter the password</div>
+                <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">Minimal 8 characters
+                    length</small>
+                <input type="password" id="defaultRegisterPhonePassword" name="password2" class="form-control"
+                    placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+
+                <button class="btn btn-info my-4 btn-block" type="submit">Sign up</button>
+
+                <div class="text-center">
+                    <p>or sign up with:</p>
+
+                    <a type="button" class="light-blue-text mx-2">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a type="button" class="light-blue-text mx-2">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a type="button" class="light-blue-text mx-2">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a type="button" class="light-blue-text mx-2">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                    <hr>
+
+                    <p>By clicking
+                        <em>Sign up</em> you agree to our
+                        <a href="" target="_blank">terms of service.</a>
+                    </p>
+                </div>
+            </form>
+
+
+
+
+        </div>
+    </div>
+
+    </div>
+
+    </section>
+    {% endblock %}

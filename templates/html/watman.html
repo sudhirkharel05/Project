@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Admin || S.S Adventure & Tours</title>
+	<!-- <link rel="icon" href="Logo.png" type="image/icon type"> -->
+	{% extends "html/base.html" %}
+	{% block body_block %}
+	{% load static %}
+
+	<div class="container"><br>
+		<div class="row">
+			<h1 style="font-family: cursive; margin-top: 12%; margin-left:35% ; color: #26a69a;">Admin DashBoard</h1>
+			<div class="col-sm-9">
+				<div class="tabelss">
+					<div id="search-form">
+						<input type="text" class="search-box"
+							style="width: 69%; margin-top: 3%; margin-left: 5%; padding: 5px;">
+						<button type="submit" id="search-btn" style="width: 20%; background-color: red; color:
+					 white; font-weight: bold; padding: 5px;">Search</button>
+					</div>
+
+					<br>
+					<table class="tflight">
+						<thead class="tfhead">
+							<th>Flight ID</th>
+							<th>Name</th>
+							<th>Date</th>
+							<th>Source</th>
+							<th>Destination</th>
+							<th>Model</th>
+							<th>Action</th>
+						</thead>
+						<tbody>
+							{% if flight_details_list%}
+							{% for i in flight_details_list %}
+							<tr>
+								<td>{{ i.flight_id }}</td>
+								<td>{{ i.name }}</td>
+								<td>{{ i.date }}</td>
+								<td>{{ i.source }}</td>
+								<td>{{ i.destination }}</td>
+								<td>{{ i.aircraft_model }}</td>
+								<td><a class="btn btn-success" href="{% url 'update' i.flight_id %}">Update</a>
+									&nbsp;&nbsp; <a href="{% url 'delete' i.flight_id %}"
+										class="btn btn-warning">Delete</a> </td>
+							</tr>
+							{% endfor %}
+							{% else %}
+							<p>No any record Found</p>
+							{% endif  %}
+						</tbody>
+					</table>
+				</div>
+				<ul class="pagination">
+					{% if flight_details_list.has_previous %}
+					<li class="page-item">
+						<a href="?page={{ users.previous_page_number }} class=" page-link"">&laquo;</a>
+					</li>
+					{% endif %}
+					{% for u in flight_details_list.paginator.page_range %}
+					{% if flight_details_list.number == user %}
+					<li class="page-item active">
+						<a href="?page={{ u }}" class="page-link">{{ u }}</a>
+					</li>
+					{% else %}
+					<li class="page-item">
+						<a href="?page={{ u }}" class="page-link">{{ u }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+					{% if flight_details_list.has_next %}
+					<li class="page-item">
+						<a href="?page={{ users.next_page_number }}" class="page-link">&raquo;</a>
+					</li>
+					{% endif %}
+				</ul>
+
+				<div class="tabelss">
+					<div id="search-form">
+						<input type="text" class="search-box"
+							style="width: 69%; margin-top: 3%; margin-left: 5%; padding: 5px;">
+						<button type="submit" id="search-btn" style="width: 20%; background-color: red; color:
+					 white; font-weight: bold; padding: 5px;">Search</button>
+					</div>
+
+					<br>
+
+					<table class="tflight">
+						<thead class="tfhead">
+							<th>Ticket ID</th>
+							<th>Seat NUmber</th>
+							<th>Passanger id</th>
+							<th>Flight id</th>
+							<th>Action</th>
+						</thead>
+
+						<tbody>
+							{% if access_records %}
+							{% for i in access_records %}
+							<tr>
+								<td>{{ i.ticket_id }}</td>
+								<td>{{ i.seat_number }}</td>
+								<td>{{ i.passanger_id }}</td>
+								<td>{{ i.flight_id }}</td>
+								<td><a class="btn btn-success" href="{% url 'update' i.flight_id %}">Update</a>
+									&nbsp;&nbsp; <a href="{% url 'delete' i.flight_id %}"
+										class="btn btn-warning">Delete</a>
+								</td>
+							</tr>
+							{% endfor %}
+							{% else %}
+							<tr>
+								<p>No any record Found</p>
+							</tr>
+							{% endif  %}
+						</tbody>
+					</table>
+				</div>
+				<ul class="pagination">
+					{% if access_records.has_previous %}
+					<li class="page-item">
+						<a href="?page1={{ users.previous_page_number }} class=" page-link"">&laquo;</a>
+					</li>
+					{% endif %}
+					{% for u in access_records.paginator.page_range %}
+					{% if access_records.number == user %}
+					<li class="page-item active">
+						<a href="?page1={{ u }}" class="page-link">{{ u }}</a>
+					</li>
+					{% else %}
+					<li class="page-item">
+						<a href="?page1={{ u }}" class="page-link">{{ u }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+					{% if access_records.has_next %}
+					<li class="page-item">
+						<a href="?page1={{ users.next_page_number }}" class="page-link">&raquo;</a>
+					</li>
+					{% endif %}
+				</ul>
+
+			</div>
+
+			<div class="col-sm-3">
+
+				<div class="djangtwo">
+
+					<br>
+					<br>
+
+					<div class="flight-form-box">
+
+						<form action="{% url 'wat' %}" method="POST">
+							<br>
+							<h3 style="margin-left:25%; color: white;">Add Flights</h3>
+							{% csrf_token %}
+
+							<input class="add-flight" type="text" name="source" placeholder="Source" required><br>
+							<input class="add-flight" type="text" name="destination" placeholder="Destination"
+								required><br>
+							<input class="add-flight" type="text" name="name" placeholder="Name" required><br>
+							<input class="add-flight" type="text" name="arrivals" placeholder="Arrival Time"
+								required><br>
+							<input class="add-flight" type="text" name="departure" placeholder="Departure Time"
+								required><br>
+							<input class="add-flight" type="text" name="duration" placeholder="Duration (hh:mm:ss)"
+								required><br>
+							<input class="add-flight" type="date" name="date" required style="width: 100%;"><br>
+							<input class="add-flight" type="Number" name="seats" placeholder="Seats" required
+								style="width: 100%;"><br>
+							<input class="add-flight" type="Number" name="fare" placeholder="Total Cost" required
+								style="width: 100%;"><br>
+							<label>Aircraft Model:</label><br>
+							<select class="add-flight" name="model" style="width: 100%;">
+								<option value="Boeing">Boeing</option>
+								<option value="Airbus">Airbus</option>
+							</select><br><br>
+							<input id="edit-button" style="margin-left: 30%; width: 60%;" type="submit">
+							<br>
+						</form>
+						<br>
+					</div>
+				</div>
+			</div>
+			<br><br>
+		</div>
+	</div>
+
+	{% endblock %}

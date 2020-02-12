@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Events || S.S Adventure & Tours</title>
+    {% extends "html/base.html" %}
+    {% block body_block %}
+    {% load static %}
+
+    <div class="container cta-100 ">
+        <div class="container">
+            <div class="row blog">
+                <div class="col-md-12" style="margin-right:5% !important;">
+                    <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+                        <ol class="carousel-indicators" style="margin-right:25% !important">
+                            <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#blogCarousel" data-slide-to="1"></li>
+                        </ol>
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="item-box-blog">
+                                            <div class="item-box-blog-image">
+                                                <!--Date-->
+                                                <div class="item-box-blog-date bg-blue-ui white"> <span
+                                                        class="mon">March
+                                                        01</span> </div>
+                                                <!--Image-->
+                                                <figure> <img alt="" src="{% static 'image/mustang.jpg' %}">
+                                                </figure>
+                                            </div>
+                                            <div class="item-box-blog-body">
+                                                <!--Heading-->
+                                                <div class="item-box-blog-heading">
+                                                    <a href="#" tabindex="0">
+                                                        <h5>Trip to Mustang</h5>
+                                                    </a>
+                                                </div>
+                                                <!--Data-->
+                                                <div class="item-box-blog-data" style="padding: px 15px;">
+                                                    <p><i class="fa fa-user-o"></i> Admin, <i
+                                                            class="fa fa-comments-o"></i> Comments(0)</p>
+                                                </div>
+                                                <!--Text-->
+                                                <div class="item-box-blog-text">
+                                                    <p>We are organizing the trip to Upper Mustang in 2076/11/26.
+                                                        Interested can contact to us in our office regarding the offer
+                                                        and price.</p>
+                                                </div>
+                                                <div class="mt"> <a href="#" tabindex="0"
+                                                        class="btn bg-blue-ui white read">read more</a> </div>
+                                                <!--Read More Button-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="item-box-blog">
+                                            <div class="item-box-blog-image">
+                                                <!--Date-->
+                                                <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Feb
+                                                        28</span> </div>
+                                                <!--Image-->
+                                                <figure> <img alt="" src="{% static 'image/kalinchowck.jpg' %}">
+                                                </figure>
+                                            </div>
+                                            <div class="item-box-blog-body">
+                                                <!--Heading-->
+                                                <div class="item-box-blog-heading">
+                                                    <a href="#" tabindex="0">
+                                                        <h5>Trip to Kalinchowck</h5>
+                                                    </a>
+                                                </div>
+                                                <!--Data-->
+                                                <div class="item-box-blog-data" style="padding: px 15px;">
+                                                    <p><i class="fa fa-user-o"></i> Admin, <i
+                                                            class="fa fa-comments-o"></i> Comments(3)</p>
+                                                </div>
+                                                <!--Text-->
+                                                <div class="item-box-blog-text">
+                                                    <p>We have a trip organized to the Kalinchowck, Dolakha. Limited
+                                                        Seats are available .<br>Event date: 2076/11/24<br>
+                                                    </p>
+                                                </div>
+                                                <div class="mt"> <a href="#" tabindex="0"
+                                                        class="btn bg-blue-ui white read">read more</a> </div>
+                                                <!--Read More Button-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="item-box-blog">
+                                            <div class="item-box-blog-image">
+                                                <!--Date-->
+                                                <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Feb
+                                                        25</span> </div>
+                                                <!--Image-->
+                                                <figure> <img alt="" src="{% static 'image/flight.jpg' %}">
+                                                </figure>
+                                            </div>
+                                            <div class="item-box-blog-body">
+                                                <!--Heading-->
+                                                <div class="item-box-blog-heading">
+                                                    <a href="#" tabindex="0">
+                                                        <h5>Mountain Flight</h5>
+                                                    </a>
+                                                </div>
+                                                <!--Data-->
+                                                <div class="item-box-blog-data" style="padding: px 15px;">
+                                                    <p><i class="fa fa-user-o"></i> Admin, <i
+                                                            class="fa fa-comments-o"></i> Comments(3)</p>
+                                                </div>
+                                                <!--Text-->
+                                                <div class="item-box-blog-text">
+                                                    <p>We have tickets available for mountain flights. Tickets available
+                                                        everyday. For more you can contact us in our Company. </p>
+                                                </div>
+                                                <div class="mt"> <a href="#" tabindex="0"
+                                                        class="btn bg-blue-ui white read">read more</a> </div>
+                                                <!--Read More Button-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--.row-->
+                            </div>
+                            <!--.item-->
+                            <div class="carousel-item ">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="item-box-blog">
+                                            <div class="item-box-blog-image">
+                                                <!--Date-->
+                                                <div class="item-box-blog-date bg-blue-ui white"> <span
+                                                        class="mon">March 20</span> </div>
+                                                <!--Image-->
+                                                <figure> <img alt="" src="{% static 'image/rafting.jpg' %}">
+                                                </figure>
+                                            </div>
+                                            <div class="item-box-blog-body">
+                                                <!--Heading-->
+                                                <div class="item-box-blog-heading">
+                                                    <a href="#" tabindex="0">
+                                                        <h5>Rafting in Trisuli</h5>
+                                                    </a>
+                                                </div>
+                                                <!--Data-->
+                                                <div class="item-box-blog-data" style="padding: px 15px;">
+                                                    <p><i class="fa fa-user-o"></i> Admin, <i
+                                                            class="fa fa-comments-o"></i> Comments(3)</p>
+                                                </div>
+                                                <!--Text-->
+                                                <div class="item-box-blog-text">
+                                                    <p>Rafting is one of the most adventurous sports. We have organized
+                                                        the events regarding rafting. Interested one can contact in our
+                                                        office.</p>
+                                                </div>
+                                                <div class="mt"> <a href="#" tabindex="0"
+                                                        class="btn bg-blue-ui white read">read more</a> </div>
+                                                <!--Read More Button-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="item-box-blog">
+                                            <div class="item-box-blog-image">
+                                                <!--Date-->
+                                                <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Aug
+                                                        01</span> </div>
+                                                <!--Image-->
+                                                <figure> <img alt="" src="{% static 'image/mardi.png' %}">
+                                                </figure>
+                                            </div>
+                                            <div class="item-box-blog-body">
+                                                <!--Heading-->
+                                                <div class="item-box-blog-heading">
+                                                    <a href="#" tabindex="0">
+                                                        <h5>Mardi Himal Trekking</h5>
+                                                    </a>
+                                                </div>
+                                                <!--Data-->
+                                                <div class="item-box-blog-data" style="padding: px 15px;">
+                                                    <p><i class="fa fa-user-o"></i> Admin, <i
+                                                            class="fa fa-comments-o"></i> Comments(3)</p>
+                                                </div>
+                                                <!--Text-->
+                                                <div class="item-box-blog-text">
+                                                    <p>Mardi himal trekking is one of the best trekking route in the
+                                                        world located at the central nepal. Interested can contact us at
+                                                        +977980********</p>
+                                                </div>
+                                                <div class="mt"> <a href="#" tabindex="0"
+                                                        class="btn bg-blue-ui white read">read more</a> </div>
+                                                <!--Read More Button-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="item-box-blog">
+                                            <div class="item-box-blog-image">
+                                                <!--Date-->
+                                                <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">May
+                                                        21</span> </div>
+                                                <!--Image-->
+                                                <figure> <img alt="" src="{% static 'image/annapurna.jpg' %}">
+                                                </figure>
+                                            </div>
+                                            <div class="item-box-blog-body">
+                                                <!--Heading-->
+                                                <div class="item-box-blog-heading">
+                                                    <a href="#" tabindex="0">
+                                                        <h5>Annapurna Base Camp</h5>
+                                                    </a>
+                                                </div>
+                                                <!--Data-->
+                                                <div class="item-box-blog-data" style="padding: px 15px;">
+                                                    <p><i class="fa fa-user-o"></i> Admin, <i
+                                                            class="fa fa-comments-o"></i> Comments(3)</p>
+                                                </div>
+                                                <!--Text-->
+                                                <div class="item-box-blog-text">
+                                                    <p>Trekking at the lap of Himalayas gives you the life time memory.
+                                                        We have organized the trekking starting from 2075/12/22. Contact
+                                                        us for more.</p>
+                                                </div>
+                                                <div class="mt"> <a href="#" tabindex="0"
+                                                        class="btn bg-blue-ui white read">read more</a> </div>
+                                                <!--Read More Button-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--.row-->
+                            </div>
+                            <!--.item-->
+                        </div>
+                        <!--.carousel-inner-->
+                    </div>
+                    <!--.Carousel-->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

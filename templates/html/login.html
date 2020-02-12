@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Login || S.S Adventure & Tours</title>
+  {% extends "html/base.html" %}
+  {% block body_block %}
+  {% load static %}
+  <div class="container">
+    <br><br>
+    <div class="main-login-content">
+      <div id="login-img">
+        <br>
+        <img src="{% static "image/login.png" %}" alt="login image">
+      </div>
+      <form class="login-info" method="POST">
+        {% csrf_token %}
+        <h1 id="welcome">User Login</h1>
+        <div id="content-form">
+
+          <label class="topic-input" id="email-add">Email Address:</label><br>
+          <input class="input-text" type="text" name="username" placeholder="someone@example.com" required><br>
+          <label class="topic-input" id="passw">Password:</label><br>
+          <input class="input-text" type="Password" name="password" placeholder="***********" required><br>
+          <label class="checkbox-select"><input id="checkbox-tick" type="checkbox">&nbsp; &nbsp;<span id="rem">Remember
+              Me</span></label><span class="f-pw" id="forgot"> <a id="pwd-1" href="#Password">Forgot
+              Password?</a></span><br>
+          <button class="button" id="edit-button" type="submit" name="login">Login</button><br>
+
+        </div>
+      </form>
+      <p class="r-account"><a href="{% url 'register' %}" id="new-acc">Don't have an account?</a></p>
+      <br><br>
+    </div>
+    <br>
+  </div>
+
+  {% endblock %}
