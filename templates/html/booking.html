@@ -4,12 +4,14 @@
 <head>
   <meta charset="utf-8">
   <title>Booking || S.S Adventure & Tours</title>
+  <!-- For extending the files from base.html using templete inheritance -->
   {% extends "html/base.html" %}
   {% block body_block %}
   {% load static %}
   {% if user.is_authenticated %}
 
   <section>
+    <!-- Using the bootstrap carousel -->
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -34,7 +36,7 @@
   </section>
   <section class="search-sec">
     <div class="container">
-
+      <!-- searching the flight -->
       <form method="GET" action="{% url 'flight_detail_view' %}" novalidate="novalidate">
         {% csrf_token %}
         <div class="row">
@@ -74,6 +76,7 @@
     </div>
   </section>
   <h5 style="text-align: center; color: white; background-color: rosybrown;">
+    <!-- Shows the message if the files seat is already book -->
     {% if messages %}
     {% for message in messages %}
     {{ message }}
@@ -86,6 +89,7 @@
       {% for Flights_details in queryset %}
 
       <div class="container">
+        <!-- Shows the flights if the flights are available in the database -->
         <button class="bookbutton" onclick="myToggle(this)" value="{{Flights_details.flight_id}}"
           name="name">{{ Flights_details.name }}</button>
 
@@ -248,65 +252,6 @@
       </div>
       {% endfor %}
     </ul>
-
-    <!-- <div class="row">
-    <div class="col-4" style="margin-left: 3%; margin-top: 13%;"><div class="about-flight" style="text-align: justify;">
-
-      <h3>About Our ticketing system</h3>
-      We make your travelling more fun by helping you and your mates. We also affer the Flights tickets at the resonable price. we have the special
-      discounts for the old aged people and the children. Paying method is totally online. One can book their ticket and can get their ticket only after the payment. 
-      Ticket are generated after your payment and can be downloaded and also can be viewed in your profile. 
-
-    </div></div>
-    <div class="col-6" style="flex: 0 0 40% !important;
-    max-width: 55% !important;
-    margin-top: 13%;
-	margin-left: 19.5% !important;
-	background-color: lightblue;">
-      <div class="booking-form-box">
-        <br>
-        <h3>Search for Flights</h3>
-        <div class="radio-btn">
-          <input class="f-shift" type="radio" class="btn" name="check" checked="checked"><span>Roundtrip</span>
-          <input class="f-shift" type="radio" class="btn" name="check"><span>One Way</span>
-          <input  class="f-shift" type="radio" class="btn" name="check"><span>Multi-City</span>
-        </div>
-        <div class="booking-form">
-          <label>Flying From</label>
-          <input type="text" class="form-control" placeholder="City or Airport">
-          <label>Flying To</label>
-          <input type="text" class="form-control" placeholder="City or Airport">
-        <div class="input-grp">
-          <label>Departing</label>
-          <input type="date" class="form-control select-date">
-        </div>
-        <div class="input-grp">
-          <label>Returning</label>
-          <input type="date" class="form-control select-date">
-        </div>
-        <div class="input-grp">
-          <label>Adults</label>
-          <input type="number" class="form-control" value="1">
-        </div>
-        <div class="input-grp">
-          <label>Children</label>
-          <input type="number" class="form-control" value="0">
-        </div>
-        <div class="input-grp">
-          <label>Travel Class</label>
-          <select class="custom-select">
-            <option value="Economy">Economy Class</option>
-            <option value="Business">Business Class</option>
-          </select>
-        </div>
-        
-        <div class="input-grp">
-          <button id="show-flight" type="button" class="btn btn-primary flight">Show Flights</button>
-        </div><br><br>
-</div></div></div></div><hr><br> -->
-
-
-
     <div class="offers">
       <br>
       <h3 style="color: purple; text-align: center;">Places Around Nepal</h3>

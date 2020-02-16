@@ -1084,3 +1084,13 @@ figure img {
   font-weight: 600;
   color: #0062cc;
 }
+#id_seat_number,
+#id_flight_id,
+#id_amount,
+#id_passanger_id,
+#id_user,
+#id_status,
+#id_date {
+  width: 60% !important;
+  margin-left: 20%;
+}

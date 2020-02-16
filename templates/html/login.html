@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Login || S.S Adventure & Tours</title>
+  <!-- using templates Inheritance -->
   {% extends "html/base.html" %}
   {% block body_block %}
   {% load static %}
@@ -15,6 +16,7 @@
         <img src="{% static "image/login.png" %}" alt="login image">
       </div>
       <form class="login-info" method="POST">
+        <!-- Creating the user login input form -->
         {% csrf_token %}
         <h1 id="welcome">User Login</h1>
         <div id="content-form">

@@ -3,28 +3,24 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Flights_details, Booking, Passanger
 from django.contrib.auth.decorators import user_passes_test
-from .forms import Flight_detailsForm
+from .forms import Flight_detailsForm, BookingForm
 from django.http import JsonResponse
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-
-# Create your views here.
-
+# Creating the views.
 @user_passes_test(lambda u: u.is_superuser) #allows access to only super users
 def wat(request):
     flight_details_list = Flights_details.objects.order_by('date')
     booking_list = Booking.objects.all()
-    paginator = Paginator(flight_details_list, 2)
+    paginator = Paginator(flight_details_list, 2)#making the pagination in the webpage
     page = request.GET.get('page')
-    
     try:
         flight_details_list = paginator.page(page)
     except PageNotAnInteger:
         flight_details_list = paginator.page(1)
     except EmptyPage:
         flight_details_list = paginator.page(paginator.num_pages)
-    
     paginator1 = Paginator(booking_list, 2)
     page = request.GET.get('page1')
     try:
@@ -33,8 +29,6 @@ def wat(request):
         booking_list = paginator1.page(1)
     except EmptyPage:
         booking_list = paginator1.page(paginator1.num_pages)
-    
-    
     if request.method == 'POST':
         flight = Flights_details()
         flight.name = request.POST['name']
@@ -118,6 +112,7 @@ def book(request, pk, fare):   # for booking the flights
             booking.flight_id = Flights_details.objects.get(flight_id = pk)
             booking.passanger_id = client
             booking.user = request.user
+            booking.status = "CONFIRMED"
             booking.save()
             return render(request,'html/bookingconfirmed.html')
             
@@ -145,3 +140,24 @@ def books(request):
 def profile(request):
     user_booking = Booking.objects.filter(user = request.user)
     return render(request, 'html/profile.html', {'user_bookings': user_booking})
+def updatebooking(request, pk):   #updating the booking
+    book = Booking.objects.get(ticket_id=pk)
+    form = BookingForm(instance=book)
+    if request.method=='POST':
+        form =BookingForm(request.POST, instance=book)
+        if form.is_valid:
+            form.save()
+            return redirect('wat')
+
+    context ={'form':form}
+    return render(request, 'html/update.html', context)
+
+def deletebooking(request, pk):
+    book = Booking.objects.get(ticket_id=pk)
+    if request.method == 'POST':
+        book.delete()
+        return redirect('wat')
+    context={'item':book}
+    return render(request, 'html/deletebooking.html', context)
+
+      

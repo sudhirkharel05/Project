@@ -14,6 +14,8 @@
 			<h1 style="font-family: cursive; margin-top: 12%; margin-left:35% ; color: #26a69a;">Admin DashBoard</h1>
 			<div class="col-sm-9">
 				<div class="tabelss">
+					<br>
+					<h3 style="text-align: center;">Flight Details</h3>
 					<div id="search-form">
 						<input type="text" class="search-box"
 							style="width: 69%; margin-top: 3%; margin-left: 5%; padding: 5px;">
@@ -23,6 +25,7 @@
 
 					<br>
 					<table class="tflight">
+						<!-- retreiving the data of flight from the database -->
 						<thead class="tfhead">
 							<th>Flight ID</th>
 							<th>Name</th>
@@ -54,6 +57,7 @@
 					</table>
 				</div>
 				<ul class="pagination">
+					<!-- Using pagination -->
 					{% if flight_details_list.has_previous %}
 					<li class="page-item">
 						<a href="?page={{ users.previous_page_number }} class=" page-link"">&laquo;</a>
@@ -78,13 +82,8 @@
 				</ul>
 
 				<div class="tabelss">
-					<div id="search-form">
-						<input type="text" class="search-box"
-							style="width: 69%; margin-top: 3%; margin-left: 5%; padding: 5px;">
-						<button type="submit" id="search-btn" style="width: 20%; background-color: red; color:
-					 white; font-weight: bold; padding: 5px;">Search</button>
-					</div>
-
+					<br>
+					<h3 style="text-align: center;">Booking Details</h3>
 					<br>
 
 					<table class="tflight">
@@ -97,6 +96,7 @@
 						</thead>
 
 						<tbody>
+							<!-- Accessing the data of booked passanger -->
 							{% if access_records %}
 							{% for i in access_records %}
 							<tr>
@@ -104,8 +104,8 @@
 								<td>{{ i.seat_number }}</td>
 								<td>{{ i.passanger_id }}</td>
 								<td>{{ i.flight_id }}</td>
-								<td><a class="btn btn-success" href="{% url 'update' i.flight_id %}">Update</a>
-									&nbsp;&nbsp; <a href="{% url 'delete' i.flight_id %}"
+								<td><a class="btn btn-success" href="{% url 'updatebooking' i.ticket_id %}">Update</a>
+									&nbsp;&nbsp; <a href="{% url 'deletebooking' i.ticket_id %}"
 										class="btn btn-warning">Delete</a>
 								</td>
 							</tr>
@@ -152,7 +152,7 @@
 					<br>
 
 					<div class="flight-form-box">
-
+						<!-- Making the input method to add the flight in ta website  -->
 						<form action="{% url 'wat' %}" method="POST">
 							<br>
 							<h3 style="margin-left:25%; color: white;">Add Flights</h3>

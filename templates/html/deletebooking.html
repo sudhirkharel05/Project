@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Delete Booking|| S.S Adventure & Tours</title>
+    {% extends "html/base.html" %}
+    {% block body_block %}
+    {% load static %}
+
+    <div class="container" id="delete-field"><br>
+        <div class="row" style="margin-top: 28% !important;">
+            <div class="col-md-6">
+                <div class="card card-body">
+
+
+                    <h4>Are you sure you want to delete {{ item }} ?</h4>
+                    <form action="{% url 'deletebooking' item.ticket_id %}" method="POST">
+                        {% csrf_token %}
+                        <a class="btn btn-warning" href="{% url 'wat' %}">Cancel</a>
+                        <input class="btn btn-danger" type="submit" name="Confirm">
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br><br>
+    </div>
+    {% endblock %}

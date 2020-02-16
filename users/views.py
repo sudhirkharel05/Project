@@ -4,24 +4,19 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 
-
 def index(request):
     return render(request,'html/boot.html')
-
 def contact(request):
     return render(request,'html/contact.html')
-
-
 def place(request):
     return render(request,'html/places.html')
-
-@login_required(login_url='/users/login/')
+@login_required(login_url='/users/login/') #Login is required for accessing the booking function
 def booking(request):
     return render(request, 'html/booking.html')
 
 # Create your views here.
 
-def login(request):
+def login(request): #login function and validation
     if request.method =='POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -36,7 +31,7 @@ def login(request):
             return redirect('login')
     else:
         return render(request, 'html/login.html')
-def register(request):
+def register(request): #registering user to the website
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -64,6 +59,6 @@ def register(request):
     else:
          return render(request, 'html/register.html')
 
-def logout(request):
+def logout(request):# logging out of the website
     auth.logout(request)
     return redirect('login')

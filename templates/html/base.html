@@ -1,19 +1,25 @@
+<!-- Declaring the document type -->
 <!DOCTYPE html>
+<!-- loads the static file of My project -->
 {% load static %}
-<link rel="icon" href="{% static 'Logo.png' %}" type="image/icon type">
+<!-- For icon in the title bar  -->
+<link rel="icon" href="{% static 'image/Logo.png' %}" type="image/icon">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+<!-- Linking the Bootstrap CDN -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- importing the fonts in the navbar -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
   integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- For linking the External CSS file -->
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
+  <!-- Designing the navbar of my website using the bootstrap template and customizing the CSS -->
   <header id="nav-fix">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-logo" href="#"><img src="{% static "image/Logo.png" %}" alt="company logo"></a>
@@ -24,9 +30,10 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active ">
+          <li class="nav-item">
             <a class="nav-link " href="{% url 'index' %}"><i class="fa fa-fw fa-home"></i>Home <span
                 class="sr-only">(current)</span></a></li>
+          <!-- for giving access to the superuser only -->
           {% if request.user.is_superuser %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'wat' %}"><i class="fa fa-fw fa-user"></i>Admin</a>
@@ -40,6 +47,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'place' %}"><i class="fa fa-fw fa-calendar"></i>Events</a>
           </li>
+          <!-- For giving access to the navbar navigation for only user's who are registered in my website -->
           {% if user.is_authenticated%}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'booking' %}"><i class="fa fa-fe fa-ticket"></i>Booking</a>
@@ -47,9 +55,11 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" onclick="show()" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
+              <!-- Retreiving the firstname of the user after login -->
               <i class="fas fa-user"></i> {{user.first_name}} </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-              <a class="dropdown-item" href="#">My account</a>
+              <a class="dropdown-item" href="{% url 'profile' %}">My account</a>
+              <!-- Logging out of the website -->
               <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
             </div>
           </li>
@@ -70,15 +80,14 @@
     </div>
 
   </header>
+  <!-- using the template inheritance -->
   {% block body_block %}
-
-
+  <!-- contains the content of differnt pages -->
   {% endblock %}
-
-
   <footer class="leg">
     <div class="socialmedia-follow">
       <p>Follow us on:</p>
+      <!-- For using social media action -->
       <a href="#" class="fa fa-facebook"></a>
       <a href="#" class="fa fa-twitter"></a>
       <a href="#" class="fa fa-google"></a>
@@ -89,6 +98,7 @@
       </div>
     </div>
   </footer>
+  <!-- for linking the javascript file -->
   <script type="text/javascript" src="{% static 'javascript/index.js' %}"></script>
 </body>
 

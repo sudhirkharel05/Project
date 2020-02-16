@@ -77,6 +77,7 @@ WSGI_APPLICATION = 'newapp.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    #setting up the MySQL database
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'websi',
