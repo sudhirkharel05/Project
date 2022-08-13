@@ -29,7 +29,14 @@
               Me</span></label><span class="f-pw" id="forgot"> <a id="pwd-1" href="#Password">Forgot
               Password?</a></span><br>
           <button class="button" id="edit-button" type="submit" name="login">Login</button><br>
+          <h5 style="text-align: center; color: red; font-weight: bold; ">
+            {% if messages %}
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
 
+            {% endif %}
+          </h5>
         </div>
       </form>
       <p class="r-account"><a href="{% url 'register' %}" id="new-acc">Don't have an account?</a></p>
